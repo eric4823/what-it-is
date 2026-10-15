@@ -37,5 +37,20 @@ jobs:
           git add runner-scanner/data/latest.json
           if ! git diff --cached --quiet; then
             git commit -m "Update runner research feed [skip ci]"
-            git push
+            # The repository may advance while a long market-data job is running.
+            # Rebase the feed commit onto the latest master before pushing.
+            for attempt in 1 2 3; do
+              git fetch origin master
+              git rebase origin/master
+              if git push origin HEAD:master; then
+                echo "Published scanner results."
+                exit 0
+              fi
+              echo "Push raced with another commit; retrying ($attempt/3)."
+              sleep 3
+            done
+            echo "::error::Failed to publish scanner data after three attempts."
+            exit 1
+          else
+            echo "Feed unchanged; nothing to publish."
           fi
