@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "status": "unconfigured",
-  "generated_at": null,
+  "status": "error",
+  "generated_at": "2026-10-15T08:02:52.669800+00:00",
   "session_date": null,
-  "message": "미국 주식 시세 API가 연결되지 않았습니다. GitHub Secrets에 MASSIVE_API_KEY를 등록하고 워크플로를 실행하세요.",
+  "message": "보통주 목록 API 오류. 유효한 API 접근권한을 확인하세요: HTTP Error 429: Too Many Requests",
   "coverage": {
     "scanned": 0,
     "total": 0
