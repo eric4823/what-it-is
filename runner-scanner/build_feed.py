@@ -92,20 +92,31 @@ def history_dates(n=115):
         if len(dates)>=n:break
     return dates[::-1]
 def find_common():
-    # Massive security type CS = common stock. This is today's snapshot, not a historical survivorship-free universe.
+    try:
+        cached=json.loads(COMMON_CACHE.read_text())
+        if time.time()-float(cached["updated"])<7*86400 and len(cached["tickers"])>=MIN_UNIVERSE:
+            return set(cached["tickers"])
+    except (OSError,ValueError,KeyError,TypeError):
+        pass
     out=set()
-    path="/v3/reference/tickers"
-    payload=get(path,{"market":"stocks","type":"CS","active":"true","limit":"1000"})
-    for i in range(15):
+    payload=get("/v3/reference/tickers",{"market":"stocks","type":"CS","active":"true","limit":"1000"})
+    for page in range(35):
         for item in payload.get("results",[]):
-            if item.get("ticker"): out.add(item["ticker"].upper())
+            if item.get("ticker"):out.add(item["ticker"].upper())
         next_url=payload.get("next_url")
         if not next_url:break
-        # Avoid sending API keys or trusting external hosts.
         parsed=urllib.parse.urlparse(next_url)
-        if parsed.hostname not in ("api.massive.com","api.polygon.io"): raise RuntimeError("Unsafe pagination URL")
+        if parsed.hostname not in ("api.massive.com","api.polygon.io"):
+            raise RuntimeError("Unexpected ticker pagination URL")
         payload=get(parsed.path,dict(urllib.parse.parse_qsl(parsed.query)))
+    else:
+        raise RuntimeError("Incomplete ticker pagination")
+    if len(out)<MIN_UNIVERSE:
+        raise RuntimeError("Too few common shares returned")
+    CACHE.mkdir(parents=True,exist_ok=True)
+    COMMON_CACHE.write_text(json.dumps({"updated":time.time(),"tickers":sorted(out)}))
     return out
+
 def score(ticker,rows):
     rows=sorted(rows,key=lambda x:x["date"])
     if len(rows)<85:return None
@@ -122,7 +133,7 @@ def score(ticker,rows):
     c5=cmf(5);c20=cmf(20)
     rvol=cur["volume"]/median([r["volume"] for r in prev]) if median([r["volume"] for r in prev])>0 else 0
     closepos=clv(cur)
-    first=not any(rows[i]["high"]/rows[i-1]["close"]>=1.5 for i in range(max(1,len(rows)-10),len(rows)))
+    first=not any(rows[i]["high"]/rows[i-1]["close"]>=1.5 for i in range(max(1,len(rows)-10),len(rows)-1))
     kind="FIRST_MOVE" if first else "CONTINUATION"
     score=0; reasons=[];risk=[]
     if c5>=.15:score+=2;reasons.append("CMF(5) 강세")
@@ -148,15 +159,20 @@ def main():
         write("error","보통주 목록 API 오류. 유효한 API 접근권한을 확인하세요: "+str(e)[:160]);return
     if len(common)<MIN_UNIVERSE:
         write("error",f"보통주 종목 커버리지 부족 ({len(common)}개).");return
-    grouped=defaultdict(list); last=None;valid_sessions=0
-    for date in history_dates():
+    grouped=load_history()
+    target_dates=history_dates(115)
+    latest_cached=max((row["date"] for rows in grouped.values() for row in rows[-1:]),default="")
+    missing=[date for date in target_dates if date>latest_cached]
+    print(f"Cached through {latest_cached}; fetching {len(missing)} daily aggregates")
+    for i,date in enumerate(missing,1):
         try:
             dat=get(f"/v2/aggs/grouped/locale/us/market/stocks/{date}",{"adjusted":"false"})
         except Exception as e:
-            print("Grouped date unavailable:",date,str(e)[:80]);continue
+            save_history(grouped)
+            write("error","Grouped aggregates unavailable: "+str(e)[:160],session=latest_cached,total=len(common))
+            return
         result=dat.get("results",[])
         if not result:continue
-        valid_sessions+=1;last=date
         for bar in result:
             sym=bar.get("T","")
             if sym not in common:continue
@@ -164,13 +180,21 @@ def main():
                 op,hi,lo,cl,vol=map(float,(bar["o"],bar["h"],bar["l"],bar["c"],bar["v"]))
                 if not(0<lo<=min(op,cl) and hi>=max(op,cl) and vol>=0):continue
                 grouped[sym].append({"date":date,"open":op,"high":hi,"low":lo,"close":cl,"volume":vol})
-            except (KeyError,ValueError,TypeError):continue
+            except (KeyError,ValueError,TypeError):
+                continue
+        if i%10==0:
+            save_history(grouped)
+    save_history(grouped)
+    dates_with_bars=set(row["date"] for rows in grouped.values() for row in rows)
+    valid_sessions=len(dates_with_bars.intersection(target_dates))
+    last=max(dates_with_bars,default=None)
     if valid_sessions<85:
         write("error",f"유효 일봉 {valid_sessions}일만 확보됨. 최소 85일 필요.",session=last,total=len(common));return
     if not last or (dt.date.today()-dt.date.fromisoformat(last)).days>5:
         write("error","데이터 업데이트 지연. 최신 거래일을 확인할 수 없습니다.",session=last,total=len(common));return
     result=[]
     for sym,rows in grouped.items():
+        if not rows or rows[-1]["date"]!=last:continue
         item=score(sym,rows)
         if item:result.append(item)
     scanned=sum(len(rows)>=85 for rows in grouped.values())
