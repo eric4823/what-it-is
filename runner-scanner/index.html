@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090f1c">
+<title>RUNNER LAB | 미국 급등주 연구 스캐너</title>
+<style>
+:root{color-scheme:dark;--bg:#090f1c;--surface:#111b2c;--surface2:#162238;--muted:#90a2b9;--text:#eef4ff;--line:#26364c;--mint:#66e8c3;--orange:#ffbe79;--rose:#ff8d9e}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% -10%,#17344b 0,transparent 40%),var(--bg);color:var(--text);font:15px/1.52 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}a{color:var(--mint);text-decoration:none}a:hover{text-decoration:underline}
+.shell{width:min(1150px,calc(100% - 38px));margin:auto}
+header{position:sticky;top:0;z-index:10;background:#090f1ce8;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff13}
+.head{display:flex;justify-content:space-between;align-items:center;min-height:76px;gap:14px}
+.brand{display:flex;align-items:center;gap:12px;color:var(--text);text-decoration:none;font-weight:800;letter-spacing:.09em;font-size:15px}
+.mark{display:grid;place-items:center;width:38px;height:38px;border-radius:11px;background:#183d42;border:1px solid #2b756a;color:var(--mint);font-size:21px}
+.brand small{display:block;color:var(--muted);font-weight:500;letter-spacing:0;font-size:11px;margin-top:-3px}
+.actions{display:flex;align-items:center;gap:10px}.pill,.chip{display:inline-flex;align-items:center;gap:7px;border-radius:100px;padding:7px 11px;border:1px solid var(--line);font-size:12px}
+.pill{color:var(--orange);background:#3a2b2038;border-color:#765039}
+.dot{width:7px;height:7px;display:inline-block;border-radius:100%;background:var(--orange)}
+.refresh{border:1px solid var(--line);background:#172337;color:#eaf2fc;border-radius:10px;padding:9px 12px}
+.refresh:hover{border-color:#659b92}
+main{padding:30px 0 64px}.eyebrow{font-size:11px;letter-spacing:.17em;color:var(--mint);font-weight:800}
+.hero{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:16px 0 26px}
+h1{font-size:clamp(28px,4vw,48px);line-height:1.15;letter-spacing:-.055em;margin:12px 0 12px;font-weight:850}
+h1 em{font-style:normal;color:var(--mint)}.lead{max-width:670px;color:#aab9cb;margin:0}
+.wave{width:190px;max-width:100%}
+.alert{margin-top:15px;display:flex;gap:12px;padding:15px 16px;background:#40272044;border:1px solid #925e42;border-radius:15px;color:#ffd2b0}
+.alert svg{flex:0 0 20px}.alert strong{display:block;font-size:13px}.alert span{display:block;color:#e6b8a0;font-size:12px;margin-top:2px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:24px 0}
+.stat{background:linear-gradient(165deg,#152238,#101a2a);border:1px solid var(--line);border-radius:15px;padding:17px 18px;min-height:109px}
+.stat-label{font-size:12px;color:var(--muted)}.stat-value{font-size:26px;font-weight:800;letter-spacing:-.04em;margin:5px 0}.stat-sub{font-size:11px;color:#7e90a5}
+.panel{background:#111a2b;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.panel-top{padding:20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.panel h2{margin:0;font-size:20px;letter-spacing:-.03em}.panel p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.controls{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.input{border:1px solid var(--line);background:#0b1422;border-radius:10px;padding:11px 12px;min-width:170px;color:var(--text);outline:none}.input:focus{border-color:#62b8b0}
+.segment{display:flex;border:1px solid var(--line);border-radius:10px;background:#0b1422;padding:3px;gap:2px}
+.segment button{border:0;border-radius:7px;background:transparent;color:var(--muted);padding:8px 12px;font-size:12px}
+.segment button.on{background:#25403f;color:#8aedd8;font-weight:700}
+.statusbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;background:#0e1929;font-size:12px;color:#a9b7c8;border-bottom:1px solid var(--line)}
+.statusbar strong{font-weight:750}.statusbar .live{color:var(--mint)}.statusbar .error{color:var(--orange)}
+.grid-head,.stock{display:grid;grid-template-columns:1.05fr .9fr .9fr 1fr 1fr 1.7fr;align-items:center;gap:12px;padding:14px 20px}
+.grid-head{background:#111c2e;color:#8297af;text-transform:uppercase;letter-spacing:.06em;font-size:11px;font-weight:750;border-bottom:1px solid var(--line)}
+.stock{border-bottom:1px solid #253348;font-size:13px}.stock:last-child{border-bottom:0}.stock:hover{background:#162236}
+.ticker{font-size:17px;font-weight:800;letter-spacing:.015em}.small{font-size:11px;color:var(--muted);margin-top:3px}.mono{font-variant-numeric:tabular-nums}
+.tag{display:inline-block;border:1px solid #37657a;background:#163145;color:#9ed4e0;padding:4px 8px;border-radius:8px;font-size:11px;font-weight:700}
+.tag.cont{border-color:#80643a;background:#3b2b18;color:#e6c18e}
+.score{font-size:17px;font-weight:800;color:var(--mint)}.reasons{font-size:11px;color:#bfd0de}
+details{margin-top:8px;font-size:11px;color:#b9c9d8}summary{cursor:pointer;color:#9bdcca}.risks{color:#f4b3a0}
+.empty{padding:64px 20px 70px;text-align:center}.empty-graphic{font-size:48px;opacity:.65}.empty h3{font-size:19px;margin:12px 0 7px}.empty p{max-width:520px;margin:auto;color:#96a7bb;font-size:13px}
+.bottom{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.info{padding:20px;background:#101a2a;border:1px solid var(--line);border-radius:15px}.info h3{font-size:15px;margin:0 0 9px}.info p,.info li{font-size:12px;color:#a9bbce}.info ul{padding-left:18px;margin:8px 0 0}
+footer{padding:27px 0 38px;color:#73879f;font-size:11px;border-top:1px solid var(--line)}
+#health{font-size:11px;color:#e7bc86}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.wave{display:none}.stats{grid-template-columns:repeat(2,1fr)}.grid-head{display:none}.stock{grid-template-columns:1fr 1fr;gap:10px 8px;padding:15px}.stock>div:last-child{grid-column:1/-1}.stock>.cell{display:flex;flex-direction:column;align-items:flex-start}.bottom{grid-template-columns:1fr}.panel-top{align-items:stretch}.controls{width:100%}.input{flex:1;min-width:110px}.actions .pill{display:none}.shell{width:min(1150px,calc(100% - 26px))}.panel-top{padding:17px}.statusbar{padding:12px 16px}}
+@media(prefers-reduced-motion:no-preference){button{transition:background .18s,border-color .18s}.refresh:active{transform:translateY(1px)}}
+</style>
+</head>
+<body>
+<header><div class="shell head">
+<a class="brand" href="./"><span class="mark">↗</span><span>RUNNER <span style="color:var(--mint)">LAB</span><small>US EQUITY SIGNAL MONITOR</small></span></a>
+<div class="actions"><span class="pill"><i class="dot"></i>미검증 연구 스캐너</span><button class="refresh" id="refresh" type="button">↻ 새로고침</button></div>
+</div></header>
+<main class="shell">
+<div class="hero"><div>
+<div class="eyebrow">RESEARCH WATCHLIST · MOBILE DASHBOARD</div>
+<h1>미국 급등주<br><em>전날 징후 스캐너</em></h1>
+<p class="lead">나스닥·NYSE의 일반 보통주를 대상으로 거래량·CMF·종가 위치·가격변화 등을 조합해 <b>연구 후보</b>를 보여줍니다. 점수는 급등 확률이 아닙니다.</p>
+</div>
+<svg class="wave" viewBox="0 0 210 145" role="img" aria-label="금융 차트 장식" fill="none"><path d="M8 110L46 96 65 104 92 72 118 88 148 49 173 65 203 16" stroke="#63e8c1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 110L46 96 65 104 92 72 118 88 148 49 173 65 203 16V143H8Z" fill="#63e8c1" opacity=".07"/><path d="M0 143H210" stroke="#284059"/></svg>
+</div>
+<div class="alert">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3 10 18H2L12 3Z"/><path d="M12 9v5m0 4h.01"/></svg>
+<div><strong>실제 돈으로 매수하기 위한 검증된 신호가 아닙니다.</strong><span>이 화면의 후보 점수는 적중률이나 매매 권유가 아닙니다. 장마감 데이터로 계산한 후보는 같은 날 종가에 소급해서 매수할 수 없으며, 실제 15:45 진입과 익일 체결 성과는 아직 검증되지 않았습니다.</span></div>
+</div>
+<section class="stats" aria-label="현황">
+<div class="stat"><div class="stat-label">종목 스캔 수</div><div id="universe" class="stat-value mono">—</div><div class="stat-sub">미검증 종목 제외</div></div>
+<div class="stat"><div class="stat-label">1차 연구 후보</div><div id="candidateCount" class="stat-value mono">—</div><div class="stat-sub">매수 추천 수 아님</div></div>
+<div class="stat"><div class="stat-label">기준 거래일 (미국)</div><div id="session" class="stat-value mono" style="font-size:21px">—</div><div class="stat-sub">정규장 일봉 기준</div></div>
+<div class="stat"><div class="stat-label">데이터 연결</div><div id="feedStatus" class="stat-value" style="font-size:21px">확인 중</div><div class="stat-sub" id="lastUpdated">—</div></div>
+</section>
+<section class="panel" aria-label="급등 후보 목록">
+<div class="panel-top"><div><h2>후보 관찰 목록</h2><p>점수순 정렬 · 개별 종목의 실제 시세·공시 별도 확인 필수</p></div>
+<div class="controls"><input id="search" class="input" placeholder="티커 검색 (예: DRUG)" aria-label="티커 검색"><div class="segment" role="group" aria-label="후보 유형"><button data-filter="all" class="on" type="button">전체</button><button data-filter="FIRST_MOVE" type="button">첫 급등형</button><button data-filter="CONTINUATION" type="button">연속형</button></div></div></div>
+<div class="statusbar"><span id="message">데이터 상태를 확인하고 있습니다.</span><strong id="health">실전 검증: 미완료</strong></div>
+<div class="grid-head"><span>종목</span><span>형태</span><span>상대 점수</span><span>CMF(5)</span><span>중앙값 RVOL(5)</span><span>관찰 근거 · 경고</span></div>
+<div id="results" class="empty"><div class="empty-graphic">⌁</div><h3>후보 데이터를 확인 중</h3><p>가상 종목이나 꾸며낸 적중률은 표시하지 않습니다.</p></div>
+</section>
+<div class="bottom">
+<section class="info"><h3>이 화면을 읽는 방법</h3><ul><li><b>첫 급등형:</b> 최근 10거래일에 +50% 장중 급등이 없던 유형</li><li><b>연속형:</b> 최근 10거래일에 이미 +50% 급등을 경험한 유형</li><li><b>점수:</b> 분석 우선순위를 정하는 휴리스틱 값. 8점 = 80%가 아님</li><li>데이터 공급이 끊기거나 표본이 부족하면 ‘후보 없음’으로 표시</li></ul></section>
+<section class="info"><h3>업데이트 및 한계</h3><p>GitHub Actions가 미국 장 종료 후 미국 일봉을 수집하고 JSON을 갱신하도록 구성되어 있습니다. GitHub Pages 자체는 상시 가동되는 Python 서버가 아닙니다.</p><p>실시간 15:45 매수 신호, 공시·SNS 실시간 수집, 호가 기반 익절 체결 검증은 별도의 데이터 계약·백테스트가 있어야 합니다.</p><p><a href="https://github.com/eric4823/what-it-is/tree/master/runner-scanner" target="_blank" rel="noopener noreferrer">GitHub 소스 보기 ↗</a></p></section>
+</div></main>
+<footer><div class="shell">RUNNER LAB · 연구용 미국 주식 관찰 도구 · ETF/ETN/워런트 제외를 위한 종목 유형 확인이 필요합니다. 제공된 정보는 매매 지시나 수익 보장이 아닙니다.</div></footer>
+<script>
+(function(){
+"use strict";
+const RAW="https://raw.githubusercontent.com/eric4823/what-it-is/master/runner-scanner/data/latest.json";
+const el=id=>document.getElementById(id);let feed=null,filter="all",query="";
+function text(node,value){node.textContent=value===null||value===undefined?"—":String(value)}
+function short(n){if(n===null||n===undefined||!Number.isFinite(Number(n)))return "—";n=Number(n);return Math.abs(n)>=1e6?(n/1e6).toFixed(1)+"M":Math.abs(n)>=1e3?(n/1e3).toFixed(1)+"K":n.toLocaleString("ko-KR")}
+function number(n,digits=2){return n===null||n===undefined||!Number.isFinite(Number(n))?"—":Number(n).toFixed(digits)}
+function dt(v){if(!v)return"—";const d=new Date(v);return Number.isNaN(d.getTime())?"—":d.toLocaleString("ko-KR",{timeZone:"Asia/Seoul",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit"})+" KST"}
+function node(tag,cls,content){const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)text(e,content);return e}
+function cell(label,main,sub,cls){const d=node("div","cell");d.append(node("div",cls||"",main));if(sub)d.append(node("div","small",sub));return d}
+function empty(title,desc){const d=el("results");d.className="empty";d.replaceChildren(node("div","empty-graphic","⌁"),node("h3","",title),node("p","",desc))}
+function render(){
+ const stat=(feed&&feed.status)||"unconfigured",rows=feed&&Array.isArray(feed.candidates)?feed.candidates:[],live=stat==="research_only";
+ text(el("universe"),live?short(feed.coverage&&feed.coverage.scanned):"—");
+ text(el("candidateCount"),live?short(rows.length):"—");
+ text(el("session"),feed&&feed.session_date||"—");
+ text(el("feedStatus"),live?"연구 모드":stat==="unconfigured"?"미연결":stat==="error"?"오류":"확인 필요");
+ text(el("lastUpdated"),dt(feed&&feed.generated_at));
+ const stale=live&&feed.generated_at&&(Date.now()-new Date(feed.generated_at).getTime()>96*3600*1000);
+ const message=feed&&feed.message?feed.message: "시장 데이터가 연결되지 않았습니다.";
+ text(el("message"),message+(stale?" · 업데이트 지연":""));
+ el("message").className=live&&!stale?"live":"error";
+ const filtered=rows.filter(r=>(filter==="all"||r.kind===filter)&&String(r.ticker||"").toUpperCase().includes(query)).slice(0,50);
+ if(!live){empty("실제 시장 데이터가 아직 없습니다","GitHub 저장소에 MASSIVE_API_KEY를 Secrets로 연결하고 Actions 작업을 실행해야 합니다. 연습용 가상 티커를 출력하지 않습니다.");return}
+ if(stale){empty("데이터 업데이트가 지연됐습니다","최신성이 확인되지 않은 데이터를 매매 후보로 표시하지 않습니다. GitHub Actions 실행 결과를 확인하세요.");return}
+ if(!filtered.length){empty("현재 표시할 후보가 없습니다",rows.length?"검색어나 유형 조건을 변경해 보세요.":"조건을 충족한 연구 후보가 없거나 유효 표본이 부족합니다.");return}
+ const d=el("results");d.className="";d.replaceChildren();
+ filtered.forEach(r=>{
+  const line=node("article","stock");
+  const title=cell("종목",r.ticker,"종가 $"+number(r.close)+" · 거래대금 $"+short(r.dollar_volume),"ticker");
+  const kind=cell("유형",r.kind==="CONTINUATION"?"연속 급등형":"첫 급등형","","tag"+(r.kind==="CONTINUATION"?" cont":""));
+  const score=cell("상대 점수",number(r.score,0)+"점","예측 확률 아님","score");
+  const cmf=cell("CMF5",number(r.cmf5,3),"","mono");
+  const rvol=cell("RVOL5",number(r.rvol_med5,2)+"배","","mono");
+  const detail=node("div");const s=node("div","reasons",(r.reasons||[]).slice(0,2).join(" · ")||"신호 상세 없음");detail.append(s);
+  const more=node("details");more.append(node("summary","","자세한 근거 및 위험"));const p=node("p","","근거: "+(r.reasons||[]).join(", "));more.append(p);more.append(node("p","risks","주의: "+((r.risks||[]).join(", ")||"호가/희석 위험 미검증")));detail.append(more);
+  line.append(title,kind,score,cmf,rvol,detail);d.append(line)
+ });
+}
+async function load(){
+ el("refresh").disabled=true;text(el("message"),"피드를 불러오는 중…");
+ try{
+  let response=await fetch(RAW+"?v="+Date.now(),{cache:"no-store"});
+  if(!response.ok)response=await fetch("./data/latest.json?v="+Date.now(),{cache:"no-store"});
+  if(!response.ok)throw new Error("HTTP "+response.status);
+  const json=await response.json();
+  if(!json||typeof json!=="object"||!json.status)throw new Error("JSON 형식 오류");
+  feed=json;render()
+ }catch(e){feed={status:"error",message:"데이터 읽기 실패: "+e.message};render()}
+ finally{el("refresh").disabled=false}
+}
+el("refresh").addEventListener("click",load);
+el("search").addEventListener("input",e=>{query=e.target.value.trim().toUpperCase();render()});
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",()=>{filter=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(x=>x.classList.toggle("on",x===b));render()}));
+load();
+})();
+</script>
+</body></html>
