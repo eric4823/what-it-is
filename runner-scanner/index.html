@@ -95,7 +95,9 @@ footer{padding:27px 0 38px;color:#73879f;font-size:11px;border-top:1px solid var
 (function(){
 "use strict";
 const RAW="https://raw.githubusercontent.com/eric4823/what-it-is/master/runner-scanner/data/latest.json";
-const el=id=>document.getElementById(id);let feed=null,filter="all",query="";
+const ACTIONS="https://api.github.com/repos/eric4823/what-it-is/actions/workflows/runner-scanner.yml/runs?per_page=3";
+const ACTIONS_PAGE="https://github.com/eric4823/what-it-is/actions/workflows/runner-scanner.yml";
+const el=id=>document.getElementById(id);let feed=null,workflowRun=null,filter="all",query="";
 function text(node,value){node.textContent=value===null||value===undefined?"—":String(value)}
 function short(n){if(n===null||n===undefined||!Number.isFinite(Number(n)))return "—";n=Number(n);return Math.abs(n)>=1e6?(n/1e6).toFixed(1)+"M":Math.abs(n)>=1e3?(n/1e3).toFixed(1)+"K":n.toLocaleString("ko-KR")}
 function number(n,digits=2){return n===null||n===undefined||!Number.isFinite(Number(n))?"—":Number(n).toFixed(digits)}
@@ -108,14 +110,26 @@ function render(){
  text(el("universe"),live?short(feed.coverage&&feed.coverage.scanned):"—");
  text(el("candidateCount"),live?short(rows.length):"—");
  text(el("session"),feed&&feed.session_date||"—");
- text(el("feedStatus"),live?"연구 모드":stat==="unconfigured"?"미연결":stat==="error"?"오류":"확인 필요");
+ const isRunning=workflowRun&&["queued","in_progress","waiting","requested","pending"].includes(workflowRun.status);
+ text(el("feedStatus"),isRunning?"수집 중":live?"연구 모드":stat==="unconfigured"?"미연결":stat==="error"?"오류":"확인 필요");
  text(el("lastUpdated"),dt(feed&&feed.generated_at));
  const stale=live&&feed.generated_at&&(Date.now()-new Date(feed.generated_at).getTime()>96*3600*1000);
- const message=feed&&feed.message?feed.message: "시장 데이터가 연결되지 않았습니다.";
- text(el("message"),message+(stale?" · 업데이트 지연":""));
- el("message").className=live&&!stale?"live":"error";
+ const message=feed&&feed.message?feed.message:"시장 데이터가 연결되지 않았습니다.";
+ const isOutdatedError=isRunning&&stat==="error";
+ const statusText=isRunning
+   ?"GitHub Actions에서 실제 시세를 수집 중입니다. 아래 오류는 이전 실행에서 저장된 내용입니다. 실행 완료 후 결과가 반영됩니다."
+   :message+(stale?" · 업데이트 지연":"");
+ text(el("message"),statusText);
+ el("message").className=(live&&!stale)||isRunning?"live":"error";
  const filtered=rows.filter(r=>(filter==="all"||r.kind===filter)&&String(r.ticker||"").toUpperCase().includes(query)).slice(0,50);
- if(!live){empty("실제 시장 데이터가 아직 없습니다","GitHub 저장소에 MASSIVE_API_KEY를 Secrets로 연결하고 Actions 작업을 실행해야 합니다. 연습용 가상 티커를 출력하지 않습니다.");return}
+ if(!live){
+   const title=isRunning?"시세 데이터를 수집하는 중입니다":stat==="error"?"데이터 수집 실패":stat==="unconfigured"?"시세 API를 연결해 주세요":"현재 사용 가능한 데이터가 없습니다";
+   const desc=isRunning?"대량 미국 과거 시세를 순차적으로 수집하고 있습니다. 완료되기 전에는 이전 오류가 남을 수 있습니다. GitHub Actions 화면에서 최신 실행을 확인하세요."
+      :stat==="error"?message+" · 새 실행 완료 후에도 이 메시지가 남으면 Actions 로그를 확인하세요.":stat==="unconfigured"?"GitHub Secrets에 MASSIVE_API_KEY를 등록한 뒤 Actions를 실행하세요.":"아직 정상적으로 검증된 후보 데이터를 받지 못했습니다.";
+   empty(title,desc);
+   if(isRunning){const a=node("a","", "GitHub Actions 실행 상황 보기 ↗");a.href=workflowRun.html_url||ACTIONS_PAGE;a.target="_blank";a.rel="noopener noreferrer";a.style.display="inline-block";a.style.marginTop="15px";el("results").append(a)}
+   return
+ }
  if(stale){empty("데이터 업데이트가 지연됐습니다","최신성이 확인되지 않은 데이터를 매매 후보로 표시하지 않습니다. GitHub Actions 실행 결과를 확인하세요.");return}
  if(!filtered.length){empty("현재 표시할 후보가 없습니다",rows.length?"검색어나 유형 조건을 변경해 보세요.":"조건을 충족한 연구 후보가 없거나 유효 표본이 부족합니다.");return}
  const d=el("results");d.className="";d.replaceChildren();
@@ -139,7 +153,16 @@ async function load(){
   if(!response.ok)throw new Error("HTTP "+response.status);
   const json=await response.json();
   if(!json||typeof json!=="object"||!json.status)throw new Error("JSON 형식 오류");
-  feed=json;render()
+  feed=json;
+  workflowRun=null;
+  try{
+    const res=await fetch(ACTIONS+"&_v="+Date.now(),{headers:{"Accept":"application/vnd.github+json"},cache:"no-store"});
+    if(res.ok){
+      const all=await res.json();
+      workflowRun=(all.workflow_runs||[]).find(x=>x.event==="workflow_dispatch"||x.event==="schedule")||null;
+    }
+  }catch(_err){/* GitHub API visibility/rate limits must not hide the feed */}
+  render()
  }catch(e){feed={status:"error",message:"데이터 읽기 실패: "+e.message};render()}
  finally{el("refresh").disabled=false}
 }
