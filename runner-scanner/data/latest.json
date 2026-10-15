@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "status": "unconfigured",
+  "generated_at": null,
+  "session_date": null,
+  "message": "미국 주식 시세 API가 연결되지 않았습니다. GitHub Secrets에 MASSIVE_API_KEY를 등록하고 워크플로를 실행하세요.",
+  "coverage": {
+    "scanned": 0,
+    "total": 0
+  },
+  "candidates": []
+}
