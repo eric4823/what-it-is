@@ -2,7 +2,7 @@
 """GitHub Actions EOD research feed. Does NOT publish intraday buy advice.
 Secret: MASSIVE_API_KEY. Uses grouped daily US equity aggregates; includes quality gates.
 """
-import os,sys,json,time,datetime as dt,urllib.request,urllib.parse
+import os,sys,json,time,datetime as dt,urllib.request,urllib.parse,urllib.error,gzip
 from pathlib import Path
 from collections import defaultdict
 from statistics import median
@@ -13,6 +13,36 @@ OUT=ROOT/"data/latest.json"
 KEY=os.getenv("MASSIVE_API_KEY","").strip()
 BASE="https://api.massive.com"
 MIN_UNIVERSE=300
+CACHE=ROOT/".cache"
+BARS_CACHE=CACHE/"bars.json.gz"
+COMMON_CACHE=CACHE/"common.json"
+REQUEST_INTERVAL=max(0.2,float(os.getenv("MASSIVE_REQUEST_INTERVAL_SECONDS","13.5")))
+_last_request=0.0
+
+def paced():
+    global _last_request
+    since=time.monotonic()-_last_request
+    if _last_request and since<REQUEST_INTERVAL:
+        time.sleep(REQUEST_INTERVAL-since)
+    _last_request=time.monotonic()
+
+def save_history(grouped):
+    CACHE.mkdir(parents=True,exist_ok=True)
+    obj={sym:rows[-125:] for sym,rows in grouped.items() if rows}
+    tmp=BARS_CACHE.with_suffix(".tmp")
+    with gzip.open(tmp,"wt",encoding="utf-8") as f:
+        json.dump(obj,f,separators=(",",":"))
+    tmp.replace(BARS_CACHE)
+
+def load_history():
+    try:
+        with gzip.open(BARS_CACHE,"rt",encoding="utf-8") as f:
+            obj=json.load(f)
+        if not isinstance(obj,dict):raise ValueError("Invalid cache")
+        return defaultdict(list,{k:v for k,v in obj.items() if isinstance(v,list)})
+    except (OSError,ValueError,TypeError) as e:
+        print("Historical cache unavailable:",str(e)[:80])
+        return defaultdict(list)
 def write(status,message,items=(),session=None,scanned=0,total=0):
     OUT.parent.mkdir(parents=True,exist_ok=True)
     obj={"schema_version":1,"status":status,"generated_at":dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -22,14 +52,35 @@ def write(status,message,items=(),session=None,scanned=0,total=0):
 def get(path,params):
     params=dict(params,apiKey=KEY)
     url=BASE+path+"?"+urllib.parse.urlencode(params)
-    for attempt in range(4):
+    for attempt in range(7):
+        paced()
         try:
-            req=urllib.request.Request(url,headers={"User-Agent":"runner-research-dashboard/1.0"})
-            with urllib.request.urlopen(req,timeout=35) as resp: return json.load(resp)
-        except Exception as e:
-            if attempt==3:raise
-            time.sleep(2*(attempt+1))
-    return {}
+            req=urllib.request.Request(url,headers={"User-Agent":"runner-research-dashboard/1.1"})
+            with urllib.request.urlopen(req,timeout=40) as resp:
+                return json.load(resp)
+        except urllib.error.HTTPError as e:
+            if e.code in (401,402,403):
+                raise RuntimeError(f"API plan/permission denied (HTTP {e.code}).") from e
+            if e.code==429:
+                header=e.headers.get("Retry-After") if e.headers else None
+                try:
+                    wait=max(65.0,min(240.0,float(header))) if header else 65.0
+                except (ValueError,TypeError):
+                    wait=65.0
+                if attempt==6:
+                    raise RuntimeError("Massive API 429 after 7 paced retries; retry later.") from e
+                print(f"HTTP 429, waiting {wait:.0f}s; retry {attempt+1}/7")
+                time.sleep(wait)
+            elif 500<=e.code<600:
+                if attempt==6:raise
+                time.sleep(min(40,2**attempt+3))
+            else:
+                raise
+        except (TimeoutError,urllib.error.URLError):
+            if attempt==6:raise
+            time.sleep(min(40,2**attempt+3))
+    raise RuntimeError("Repeated API errors")
+
 def history_dates(n=115):
     ny=dt.datetime.now(ZoneInfo("America/New_York"))
     # Only request fully closed trading days, never the current unclosed session.
