@@ -12,13 +12,20 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Restore historical market cache
+        uses: actions/cache@v4
+        with:
+          path: runner-scanner/.cache
+          key: runner-market-${{ github.run_id }}
+          restore-keys: |
+            runner-market-
       - name: Generate research feed
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
