@@ -26,31 +26,45 @@ jobs:
           key: runner-market-${{ github.run_id }}
           restore-keys: |
             runner-market-
+          save-always: true
       - name: Generate research feed
         env:
           MASSIVE_API_KEY: ${{ secrets.MASSIVE_API_KEY }}
         run: python runner-scanner/build_feed.py
-      - name: Publish feed only on change
+      - name: Backup research output (even if publish fails)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: runner-data-${{ github.run_id }}
+          path: runner-scanner/data/latest.json
+          retention-days: 14
+          if-no-files-found: error
+      - name: Publish feed without stale-checkout conflicts
+        if: success()
+        shell: bash
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add runner-scanner/data/latest.json
-          if ! git diff --cached --quiet; then
+          cp runner-scanner/data/latest.json "${RUNNER_TEMP}/runner-latest.json"
+          for attempt in 1 2 3 4 5; do
+            # Apply this run's JSON to the current remote HEAD, NOT the stale
+            # commit checked out before the 20–30 minute API backfill.
+            git fetch origin master
+            git reset --hard origin/master
+            cp "${RUNNER_TEMP}/runner-latest.json" runner-scanner/data/latest.json
+            git add runner-scanner/data/latest.json
+            if git diff --cached --quiet; then
+              echo "Feed unchanged; current commit is up to date."
+              exit 0
+            fi
             git commit -m "Update runner research feed [skip ci]"
-            # The repository may advance while a long market-data job is running.
-            # Rebase the feed commit onto the latest master before pushing.
-            for attempt in 1 2 3; do
-              git fetch origin master
-              git rebase origin/master
-              if git push origin HEAD:master; then
-                echo "Published scanner results."
-                exit 0
-              fi
-              echo "Push raced with another commit; retrying ($attempt/3)."
-              sleep 3
-            done
-            echo "::error::Failed to publish scanner data after three attempts."
-            exit 1
-          else
-            echo "Feed unchanged; nothing to publish."
-          fi
+            if git push origin HEAD:master; then
+              echo "Published scanner results."
+              exit 0
+            fi
+            echo "Concurrent remote commit: retrying (${attempt}/5)"
+            sleep 3
+          done
+          echo "::error::Data feed is saved as a run artifact, but pushing results failed."
+          exit 1
