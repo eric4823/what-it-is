@@ -1,144 +1,363 @@
 {
   "schema_version": 1,
   "status": "research_only",
-  "generated_at": "2026-10-15T11:22:42.400684+00:00",
-  "session_date": "2026-10-14",
-  "message": "일봉 111거래일 분석 · 연구 후보 105개 · 오늘 기준 보통주 스냅샷 · 15:45 매수 신호가 아님",
+  "generated_at": "2026-10-16T05:48:34.167469+00:00",
+  "session_date": "2026-10-15",
+  "message": "일봉 111거래일 분석 · 연구 후보 186개 · 오늘 기준 보통주 스냅샷 · 15:45 매수 신호가 아님",
   "coverage": {
-    "scanned": 4886,
+    "scanned": 4891,
     "total": 5320
   },
   "candidates": [
     {
-      "ticker": "NXGL",
-      "kind": "CONTINUATION",
-      "score": 8,
-      "close": 5.46,
-      "dollar_volume": 18249345,
-      "cmf5": 0.1883,
-      "rvol_med5": 5.243,
+      "ticker": "BBWI",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 20.44,
+      "dollar_volume": 257998484,
+      "cmf5": 0.4906,
+      "rvol_med5": 1.83,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
         "중앙값 RVOL 상승",
-        "20일 신고가",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "M",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 24.22,
+      "dollar_volume": 228392980,
+      "cmf5": 0.3488,
+      "rvol_med5": 1.705,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "PTON",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 5.33,
+      "dollar_volume": 74663391,
+      "cmf5": 0.552,
+      "rvol_med5": 1.767,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "KD",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 13.19,
+      "dollar_volume": 69693556,
+      "cmf5": 0.1933,
+      "rvol_med5": 1.604,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "REAL",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 10.54,
+      "dollar_volume": 62319651,
+      "cmf5": 0.2739,
+      "rvol_med5": 2.099,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "TRIP",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 9.39,
+      "dollar_volume": 42828540,
+      "cmf5": 0.2695,
+      "rvol_med5": 1.674,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "FLYW",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 19.35,
+      "dollar_volume": 32558177,
+      "cmf5": 0.3195,
+      "rvol_med5": 1.666,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "COTY",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 3.19,
+      "dollar_volume": 24504573,
+      "cmf5": 0.4483,
+      "rvol_med5": 1.962,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "PAR",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 17.35,
+      "dollar_volume": 22140395,
+      "cmf5": 0.5174,
+      "rvol_med5": 2.14,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "PLAY",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 7.96,
+      "dollar_volume": 20452023,
+      "cmf5": 0.3677,
+      "rvol_med5": 1.635,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "MAX",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 11.68,
+      "dollar_volume": 17019592,
+      "cmf5": 0.2818,
+      "rvol_med5": 1.769,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "WEST",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 8.56,
+      "dollar_volume": 6067507,
+      "cmf5": 0.3369,
+      "rvol_med5": 3.133,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "GCDT",
+      "kind": "CONTINUATION",
+      "score": 7,
+      "close": 0.33,
+      "dollar_volume": 5255980,
+      "cmf5": 0.1793,
+      "rvol_med5": 8.323,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
         "연속형 거래량 확대"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "PTLE",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 9.05,
+      "dollar_volume": 4938650,
+      "cmf5": 0.7102,
+      "rvol_med5": 42.375,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "TCPC",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 4.22,
+      "dollar_volume": 4425975,
+      "cmf5": 0.2219,
+      "rvol_med5": 2.22,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "ZIP",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 4.85,
+      "dollar_volume": 4335919,
+      "cmf5": 0.4953,
+      "rvol_med5": 1.655,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "BRCB",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 8.27,
+      "dollar_volume": 4264660,
+      "cmf5": 0.5069,
+      "rvol_med5": 2.079,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "OXSQ",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 1.4,
+      "dollar_volume": 3645650,
+      "cmf5": 0.8133,
+      "rvol_med5": 2.018,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "RRGB",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 9.14,
+      "dollar_volume": 2664532,
+      "cmf5": 0.6294,
+      "rvol_med5": 2.883,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "WHF",
+      "kind": "FIRST_MOVE",
+      "score": 7,
+      "close": 7.66,
+      "dollar_volume": 1273933,
+      "cmf5": 0.3373,
+      "rvol_med5": 1.605,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
       ],
       "risks": [
-        "5거래일 상승률 +80% 초과"
+        "거래대금이 낮아 실제 체결 어려울 수 있음"
       ]
-    },
-    {
-      "ticker": "XHLD",
-      "kind": "CONTINUATION",
-      "score": 8,
-      "close": 0.465,
-      "dollar_volume": 6186538,
-      "cmf5": 0.7004,
-      "rvol_med5": 13.227,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "연속형 거래량 확대"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "AGMH",
-      "kind": "CONTINUATION",
-      "score": 8,
-      "close": 0.5038,
-      "dollar_volume": 5162091,
-      "cmf5": 0.4705,
-      "rvol_med5": 17.165,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "연속형 거래량 확대"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "BMBL",
-      "kind": "CONTINUATION",
-      "score": 7,
-      "close": 5.97,
-      "dollar_volume": 234687177,
-      "cmf5": 0.2839,
-      "rvol_med5": 14.771,
-      "reasons": [
-        "CMF(5) 강세",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "연속형 거래량 확대"
-      ],
-      "risks": [
-        "5거래일 상승률 +80% 초과"
-      ]
-    },
-    {
-      "ticker": "PRGO",
-      "kind": "FIRST_MOVE",
-      "score": 7,
-      "close": 15.95,
-      "dollar_volume": 73961058,
-      "cmf5": 0.446,
-      "rvol_med5": 2.432,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "ARDT",
-      "kind": "FIRST_MOVE",
-      "score": 7,
-      "close": 11.95,
-      "dollar_volume": 12490479,
-      "cmf5": 0.6832,
-      "rvol_med5": 1.658,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "SUJA",
-      "kind": "FIRST_MOVE",
-      "score": 7,
-      "close": 11.94,
-      "dollar_volume": 3576877,
-      "cmf5": 0.6012,
-      "rvol_med5": 1.669,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": []
     },
     {
       "ticker": "MWYN",
       "kind": "FIRST_MOVE",
       "score": 7,
-      "close": 1.92,
-      "dollar_volume": 1556924,
-      "cmf5": 0.7132,
-      "rvol_med5": 3.441,
+      "close": 1.93,
+      "dollar_volume": 924502,
+      "cmf5": 0.7613,
+      "rvol_med5": 2.032,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -151,101 +370,13 @@
       ]
     },
     {
-      "ticker": "HLP",
-      "kind": "FIRST_MOVE",
-      "score": 7,
-      "close": 2.98,
-      "dollar_volume": 1419629,
-      "cmf5": 0.6643,
-      "rvol_med5": 5.434,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "ATOS",
-      "kind": "FIRST_MOVE",
-      "score": 7,
-      "close": 2.78,
-      "dollar_volume": 663604,
-      "cmf5": 0.2615,
-      "rvol_med5": 2.932,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "WFCF",
-      "kind": "CONTINUATION",
-      "score": 7,
-      "close": 14.2,
-      "dollar_volume": 553817,
-      "cmf5": 0.2068,
-      "rvol_med5": 3.295,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "연속형 거래량 확대"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "ACI",
+      "ticker": "WULF",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 13.08,
-      "dollar_volume": 175924068,
-      "cmf5": 0.6949,
-      "rvol_med5": 1.152,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "BBWI",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 18.95,
-      "dollar_volume": 153708240,
-      "cmf5": 0.4867,
-      "rvol_med5": 1.176,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "CLBK",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 10.84,
-      "dollar_volume": 48977181,
-      "cmf5": 0.2807,
-      "rvol_med5": 1.633,
+      "close": 12.62,
+      "dollar_volume": 1364162488,
+      "cmf5": 0.249,
+      "rvol_med5": 3.185,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -255,12 +386,268 @@
       "risks": []
     },
     {
-      "ticker": "GO",
+      "ticker": "HBAN",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 12.73,
-      "dollar_volume": 27163676,
-      "cmf5": 0.5396,
+      "close": 15.35,
+      "dollar_volume": 623886589,
+      "cmf5": 0.4159,
+      "rvol_med5": 2.029,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "CORZ",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 14.455,
+      "dollar_volume": 488041262,
+      "cmf5": 0.2016,
+      "rvol_med5": 2.15,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "TTD",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 13.13,
+      "dollar_volume": 339343270,
+      "cmf5": 0.1985,
+      "rvol_med5": 1.627,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "CLSK",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 9.35,
+      "dollar_volume": 255905930,
+      "cmf5": 0.2104,
+      "rvol_med5": 1.777,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "HST",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 23.85,
+      "dollar_volume": 225728909,
+      "cmf5": 0.3131,
+      "rvol_med5": 1.514,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "FMC",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 5.62,
+      "dollar_volume": 183362200,
+      "cmf5": 0.4898,
+      "rvol_med5": 9.246,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "OPEN",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 2.32,
+      "dollar_volume": 159064750,
+      "cmf5": 0.1892,
+      "rvol_med5": 2.232,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "UPST",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 24.75,
+      "dollar_volume": 153042724,
+      "cmf5": 0.2737,
+      "rvol_med5": 1.978,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "RELY",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 24.65,
+      "dollar_volume": 77587884,
+      "cmf5": 0.4537,
+      "rvol_med5": 1.506,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "KRG",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 24.52,
+      "dollar_volume": 77180082,
+      "cmf5": 0.3641,
+      "rvol_med5": 1.642,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "TNDM",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 16.52,
+      "dollar_volume": 75834229,
+      "cmf5": 0.4946,
+      "rvol_med5": 2.687,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "CRML",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 6.95,
+      "dollar_volume": 75759762,
+      "cmf5": 0.2054,
+      "rvol_med5": 2.84,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "FTRE",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 22.745,
+      "dollar_volume": 66197129,
+      "cmf5": 0.3021,
+      "rvol_med5": 2.352,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "SHO",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 11.87,
+      "dollar_volume": 65361795,
+      "cmf5": 0.3371,
+      "rvol_med5": 3.521,
+      "reasons": [
+        "CMF(5) 강세",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "OBDC",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 10.35,
+      "dollar_volume": 56506339,
+      "cmf5": 0.4292,
+      "rvol_med5": 1.805,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "SG",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 10.6,
+      "dollar_volume": 48146192,
+      "cmf5": 0.7245,
+      "rvol_med5": 1.203,
+      "reasons": [
+        "CMF(5) 강세",
+        "단기 CMF 우위",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "PRVA",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 22.62,
+      "dollar_volume": 45287214,
+      "cmf5": 0.284,
       "rvol_med5": 1.416,
       "reasons": [
         "CMF(5) 강세",
@@ -271,13 +658,13 @@
       "risks": []
     },
     {
-      "ticker": "OSW",
+      "ticker": "ENR",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 24.12,
-      "dollar_volume": 25143745,
-      "cmf5": 0.5385,
-      "rvol_med5": 2.424,
+      "close": 22.0,
+      "dollar_volume": 37090347,
+      "cmf5": 0.5004,
+      "rvol_med5": 2.123,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -287,13 +674,13 @@
       "risks": []
     },
     {
-      "ticker": "COLL",
+      "ticker": "BETR",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 22.51,
-      "dollar_volume": 20714642,
-      "cmf5": 0.164,
-      "rvol_med5": 1.727,
+      "close": 10.76,
+      "dollar_volume": 36488997,
+      "cmf5": 0.2072,
+      "rvol_med5": 3.721,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -303,13 +690,13 @@
       "risks": []
     },
     {
-      "ticker": "KRP",
+      "ticker": "PD",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 15.78,
-      "dollar_volume": 10988979,
-      "cmf5": 0.6518,
-      "rvol_med5": 1.274,
+      "close": 17.25,
+      "dollar_volume": 35091928,
+      "cmf5": 0.4622,
+      "rvol_med5": 1.32,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -319,13 +706,13 @@
       "risks": []
     },
     {
-      "ticker": "BYRN",
+      "ticker": "TAC",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 4.65,
-      "dollar_volume": 6843903,
-      "cmf5": 0.8095,
-      "rvol_med5": 1.705,
+      "close": 12.66,
+      "dollar_volume": 31965000,
+      "cmf5": 0.2328,
+      "rvol_med5": 2.47,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -335,13 +722,13 @@
       "risks": []
     },
     {
-      "ticker": "BCAL",
+      "ticker": "AKR",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 21.47,
-      "dollar_volume": 6626333,
-      "cmf5": 0.1689,
-      "rvol_med5": 1.813,
+      "close": 18.53,
+      "dollar_volume": 31790780,
+      "cmf5": 0.3829,
+      "rvol_med5": 1.758,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -351,13 +738,29 @@
       "risks": []
     },
     {
-      "ticker": "PALI",
+      "ticker": "RVLV",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 1.48,
-      "dollar_volume": 6166657,
-      "cmf5": 0.2562,
-      "rvol_med5": 2.622,
+      "close": 23.21,
+      "dollar_volume": 27623944,
+      "cmf5": 0.2025,
+      "rvol_med5": 2.266,
+      "reasons": [
+        "CMF(5) 강세",
+        "중앙값 RVOL 상승",
+        "종가가 당일 고가 근처",
+        "20일 신고가"
+      ],
+      "risks": []
+    },
+    {
+      "ticker": "NVCR",
+      "kind": "FIRST_MOVE",
+      "score": 6,
+      "close": 14.41,
+      "dollar_volume": 26094758,
+      "cmf5": 0.1823,
+      "rvol_med5": 1.771,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -367,77 +770,13 @@
       "risks": []
     },
     {
-      "ticker": "CCII",
+      "ticker": "FWRG",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 10.3,
-      "dollar_volume": 3864148,
-      "cmf5": 0.736,
-      "rvol_med5": 4.826,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "IPFX",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 10.04,
-      "dollar_volume": 3700945,
-      "cmf5": 0.1901,
-      "rvol_med5": 15.705,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "BCSS",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 10.225,
-      "dollar_volume": 3419128,
-      "cmf5": 0.7217,
-      "rvol_med5": 5.378,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "CPSH",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 3.52,
-      "dollar_volume": 3241484,
-      "cmf5": 0.4069,
-      "rvol_med5": 4.37,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "SJT",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 4.58,
-      "dollar_volume": 3103591,
-      "cmf5": 0.5461,
-      "rvol_med5": 1.206,
+      "close": 12.36,
+      "dollar_volume": 24049551,
+      "cmf5": 0.4779,
+      "rvol_med5": 1.156,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -447,29 +786,13 @@
       "risks": []
     },
     {
-      "ticker": "MED",
+      "ticker": "RLJ",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 11.85,
-      "dollar_volume": 2334705,
-      "cmf5": 0.2961,
-      "rvol_med5": 2.148,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "VMD",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 9.69,
-      "dollar_volume": 2136285,
-      "cmf5": 0.4473,
-      "rvol_med5": 1.3,
+      "close": 11.63,
+      "dollar_volume": 23379564,
+      "cmf5": 0.4085,
+      "rvol_med5": 1.332,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
@@ -479,354 +802,34 @@
       "risks": []
     },
     {
-      "ticker": "SAAQ",
+      "ticker": "TBCH",
       "kind": "FIRST_MOVE",
       "score": 6,
-      "close": 10.07,
-      "dollar_volume": 1635204,
-      "cmf5": 0.5742,
-      "rvol_med5": 4.713,
+      "close": 16.17,
+      "dollar_volume": 20973344,
+      "cmf5": 0.3413,
+      "rvol_med5": 2.491,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
         "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "IRHO",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 10.07,
-      "dollar_volume": 1556862,
-      "cmf5": 0.8065,
-      "rvol_med5": 3.369,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "NTWK",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 6.49,
-      "dollar_volume": 1534282,
-      "cmf5": 0.1527,
-      "rvol_med5": 2.542,
-      "reasons": [
-        "CMF(5) 강세",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처",
-        "20일 신고가"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "ACGLN",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 15.05,
-      "dollar_volume": 1437994,
-      "cmf5": 0.4535,
-      "rvol_med5": 1.816,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "AGNCL",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 24.93,
-      "dollar_volume": 759717,
-      "cmf5": 0.5992,
-      "rvol_med5": 2.041,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "RILYG",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 24.98,
-      "dollar_volume": 650604,
-      "cmf5": 0.3274,
-      "rvol_med5": 3.698,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "DIBS",
-      "kind": "FIRST_MOVE",
-      "score": 6,
-      "close": 3.95,
-      "dollar_volume": 645281,
-      "cmf5": 0.4256,
-      "rvol_med5": 2.103,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": [
-        "거래대금이 낮아 실제 체결 어려울 수 있음"
-      ]
-    },
-    {
-      "ticker": "KVUE",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 18.01,
-      "dollar_volume": 497258061,
-      "cmf5": 0.4905,
-      "rvol_med5": 1.187,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "KEY",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 19.79,
-      "dollar_volume": 427833156,
-      "cmf5": 0.4039,
-      "rvol_med5": 1.334,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "HBAN",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 15.1,
-      "dollar_volume": 427490342,
-      "cmf5": 0.4957,
-      "rvol_med5": 1.413,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "VFC",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 16.48,
-      "dollar_volume": 312265348,
-      "cmf5": 0.4484,
-      "rvol_med5": 2.108,
-      "reasons": [
-        "CMF(5) 강세",
-        "중앙값 RVOL 상승",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "JHX",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 24.58,
-      "dollar_volume": 216694856,
-      "cmf5": 0.3273,
-      "rvol_med5": 1.551,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "LYFT",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 16.48,
-      "dollar_volume": 210097271,
-      "cmf5": 0.4744,
-      "rvol_med5": 1.199,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "CHWY",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 20.83,
-      "dollar_volume": 183081583,
-      "cmf5": 0.641,
-      "rvol_med5": 1.218,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "CAG",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 13.84,
-      "dollar_volume": 167689665,
-      "cmf5": 0.491,
-      "rvol_med5": 1.325,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "ONB",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 24.51,
-      "dollar_volume": 131488530,
-      "cmf5": 0.2431,
-      "rvol_med5": 1.165,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "UPST",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 22.74,
-      "dollar_volume": 114189454,
-      "cmf5": 0.1606,
-      "rvol_med5": 1.606,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "SAIL",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 19.3,
-      "dollar_volume": 96419609,
-      "cmf5": 0.1799,
-      "rvol_med5": 1.166,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "FSM",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 10.17,
-      "dollar_volume": 72774916,
-      "cmf5": 0.256,
-      "rvol_med5": 2.01,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "중앙값 RVOL 상승"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "JBS",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 13.02,
-      "dollar_volume": 69352529,
-      "cmf5": 0.6465,
-      "rvol_med5": 0.822,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처",
         "20일 신고가"
       ],
       "risks": []
     },
     {
-      "ticker": "VRDN",
+      "ticker": "NIQ",
       "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 18.38,
-      "dollar_volume": 68628788,
-      "cmf5": 0.1914,
-      "rvol_med5": 1.918,
+      "score": 6,
+      "close": 18.94,
+      "dollar_volume": 19988028,
+      "cmf5": 0.1721,
+      "rvol_med5": 1.153,
       "reasons": [
         "CMF(5) 강세",
         "단기 CMF 우위",
-        "중앙값 RVOL 상승"
-      ],
-      "risks": []
-    },
-    {
-      "ticker": "NAVN",
-      "kind": "FIRST_MOVE",
-      "score": 5,
-      "close": 24.0,
-      "dollar_volume": 66717716,
-      "cmf5": 0.5392,
-      "rvol_med5": 1.237,
-      "reasons": [
-        "CMF(5) 강세",
-        "단기 CMF 우위",
-        "종가가 당일 고가 근처"
+        "종가가 당일 고가 근처",
+        "20일 신고가"
       ],
       "risks": []
     }
